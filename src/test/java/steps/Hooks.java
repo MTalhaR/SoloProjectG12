@@ -13,12 +13,14 @@ public class Hooks extends CommonMethods {
     }
 
     @After
+
     public void postCondition(Scenario scenario){
         byte[] pic;
         if(scenario.isFailed()){
             //failed screenshot will be available inside failed folder
             pic =  takeScreenshot("failed/" + scenario.getName());
         }else {
+
             pic = takeScreenshot("passed/" + scenario.getName());
         }
 

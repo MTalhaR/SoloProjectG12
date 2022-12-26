@@ -40,5 +40,4 @@ public class LoginSteps extends CommonMethods {
         Assert.assertEquals(error, errorActual);
     }
 
-
 }
