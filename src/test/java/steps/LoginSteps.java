@@ -16,7 +16,7 @@ public class LoginSteps extends CommonMethods {
 
     @When("user clicks on login button")
     public void user_clicks_on_login_button() {
-        click(login.loginButton);
+       click(login.loginButton);
     }
 
     @Then("user is successfully logged in")
@@ -39,4 +39,5 @@ public class LoginSteps extends CommonMethods {
         String errorActual =  login.errorMessage.getText();
         Assert.assertEquals(error, errorActual);
     }
+
 }

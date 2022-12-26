@@ -17,3 +17,12 @@ Feature: Login functionality
       |admin1234 |Hum@nhrm123|Invalid credentials|
       |          |Hum@nhrm123|Username cannot be empty|
       |admin     |           |Password cannot be empty|
+
+
+
+
+
+
+
+
+
