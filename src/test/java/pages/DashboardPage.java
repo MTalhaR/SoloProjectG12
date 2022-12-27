@@ -17,6 +17,9 @@ public class DashboardPage extends CommonMethods {
     @FindBy(id="menu_pim_addEmployee")
     public WebElement addEmployeeOption;
 
+    @FindBy (xpath = "//b[text()='Directory']")
+    public WebElement directoryBtn;
+
 
     public DashboardPage() {
         PageFactory.initElements(driver, this);

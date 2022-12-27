@@ -2,10 +2,7 @@ package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class CommonMethods extends PageInitializer {
@@ -70,6 +68,16 @@ public class CommonMethods extends PageInitializer {
         element.click();
     }
 
+    public static JavascriptExecutor getJSExecutor(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return js;
+    }
+
+    //this function will perform click on element using javascript executor
+    public static void jsClick(WebElement element){
+        getJSExecutor().executeScript("arguments[0].click();", element);
+    }
+
     public static void selectDropdown(WebElement element, String text){
         Select s = new Select(element);
         s.selectByVisibleText(text);
@@ -95,6 +103,34 @@ public class CommonMethods extends PageInitializer {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         return sdf.format(date);
+    }
+
+    public static void staticCalanderSelection(WebElement monthWebElement, String selectMonthText, WebElement yearWebElement, String selectYearText, List<WebElement> dayList, String selectDayText
+    ){
+        selectDropdown(monthWebElement,selectMonthText);
+        selectDropdown(yearWebElement, selectYearText);
+
+        List<WebElement> days = dayList;
+        for(int i = 0; i<days.size(); i++) {
+            WebElement dayElements = days.get(i);
+            String dayText = dayElements.getText();
+            if (dayText.equalsIgnoreCase(selectDayText)) {
+                dayElements.click();
+                break;
+            }
+        }
+    }
+
+    public static void tableSelection(List<WebElement> tableElement, String id) {
+        List <WebElement> table = tableElement;
+        for (int i = 0; i < table.size(); i++) {
+            WebElement idPerson = table.get(i);
+            String idText = idPerson.getText();
+            if (idText.equals(id)){
+                idPerson.click();
+                break;
+            }
+        }
     }
 
 }

@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.CommonMethods;
 
+import java.util.List;
+
 public class EmployeeListPage extends CommonMethods {
 
     @FindBy(id="empsearch_id")
@@ -16,8 +18,11 @@ public class EmployeeListPage extends CommonMethods {
     @FindBy(id="searchBtn")
     public WebElement searchButton;
 
-    @FindBy(xpath = "//a[text()='1096485']")
+    @FindBy(xpath = "//a[text()='talha']")
     public WebElement idDisplayed;
+
+    @FindBy(xpath = "//table[@id='resultTable']/tbody/tr/td")
+    public List<WebElement> tableElement;
 
     public EmployeeListPage(){
         PageFactory.initElements(driver,this);
