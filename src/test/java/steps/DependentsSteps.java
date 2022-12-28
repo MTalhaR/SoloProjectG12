@@ -3,11 +3,12 @@ package steps;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utils.CommonMethods;
+import utils.ConfigReader;
 
 public class DependentsSteps extends CommonMethods {
     @When("user clicks on displayed information")
     public void user_clicks_on_displayed_information() {
-        click(employeeList.idDisplayed);
+        selectByIDFromTable(employeeList.tableElement, ConfigReader.getPropertyValue("id"));
     }
 
     @Then("user sees employee details")
@@ -47,5 +48,6 @@ public class DependentsSteps extends CommonMethods {
     @Then("user see the dependents information displayed")
     public void user_see_the_dependents_information_displayed() {
         System.out.println("information displayed");
+        tableSelection(dependents.tableResult,"zdfds");
     }
 }

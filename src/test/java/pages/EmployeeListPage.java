@@ -18,9 +18,6 @@ public class EmployeeListPage extends CommonMethods {
     @FindBy(id="searchBtn")
     public WebElement searchButton;
 
-    @FindBy(xpath = "//a[text()='talha']")
-    public WebElement idDisplayed;
-
     @FindBy(xpath = "//table[@id='resultTable']/tbody/tr/td")
     public List<WebElement> tableElement;
 

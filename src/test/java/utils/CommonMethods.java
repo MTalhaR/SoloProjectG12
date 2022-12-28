@@ -121,13 +121,31 @@ public class CommonMethods extends PageInitializer {
         }
     }
 
-    public static void tableSelection(List<WebElement> tableElement, String id) {
+    public static void tableConfirmation(List<WebElement> tableElement, String id) {
         List <WebElement> table = tableElement;
         for (int i = 0; i < table.size(); i++) {
             WebElement idPerson = table.get(i);
             String idText = idPerson.getText();
             if (idText.equals(id)){
-                idPerson.click();
+                System.out.println("Information is displayed");
+                System.out.println(idText);
+                break;
+            }
+        }
+    }
+
+
+    public static void isDisplayed(WebElement element, String fieldName){
+        waitForClickability(element);
+        System.out.println(fieldName +" " + element.isDisplayed());
+    }
+    public static void selectByIDFromTable(List<WebElement> tableElement, String id) {
+        List <WebElement> table = tableElement;
+        for (int i = 0; i < table.size(); i++) {
+            WebElement idPerson = table.get(i);
+            String idText = idPerson.getText();
+            if (idText.equals(id)){
+                click(idPerson);
                 break;
             }
         }
